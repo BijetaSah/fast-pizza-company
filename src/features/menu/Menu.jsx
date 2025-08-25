@@ -16,7 +16,6 @@ function Menu() {
 
 export async function loader() {
   const menu = await getMenu();
-  console.log(menu);
   return menu;
 }
 export default Menu;

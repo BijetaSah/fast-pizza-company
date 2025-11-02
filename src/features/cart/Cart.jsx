@@ -29,8 +29,8 @@ const fakeCart = [
 
 function Cart() {
   const userName = useSelector((state) => state.user.userName);
-  console.log(userName);
   const cart = fakeCart;
+
   return (
     <div>
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>

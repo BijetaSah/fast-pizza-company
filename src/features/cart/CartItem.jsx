@@ -1,6 +1,7 @@
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utilities/helpers";
 import DeleteButton from "./DeleteButton";
+import UpdateItemQuantity from "./UpdateItemQuantity";
 
 function CartItem({ item }) {
   const { id, name, quantity, totalPrice } = item;
@@ -14,6 +15,7 @@ function CartItem({ item }) {
         <p className="text-sm font-bold text-stone-700">
           {formatCurrency(totalPrice)}
         </p>
+        <UpdateItemQuantity totalQuantity={quantity} pizzaId={id} />
         <DeleteButton pizzaId={id} />
       </div>
     </li>

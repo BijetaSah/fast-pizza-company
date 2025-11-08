@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getTotalPizzaPrice, getTotalPizzaQunaity } from "./cartSlice";
+import { getTotalCartPrice, getTotalCartQunaity } from "./cartSlice";
 import { formatCurrency } from "../../utilities/helpers";
 
 function CartOverview() {
-  const totalPizzaQuantity = useSelector(getTotalPizzaQunaity);
-  const totalPizzaPrice = useSelector(getTotalPizzaPrice);
+  const totalPizzaQuantity = useSelector(getTotalCartQunaity);
+  const totalPizzaPrice = useSelector(getTotalCartPrice);
+  console.log(totalPizzaPrice, totalPizzaQuantity);
 
   if (!totalPizzaQuantity || !totalPizzaPrice) return null;
   return (

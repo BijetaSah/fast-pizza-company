@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, getCurrentItemQuantityById } from "../cart/cartSlice";
 import DeleteButton from "../cart/DeleteButton";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 
 function MenuItem({ pizza }) {
   const dispatch = useDispatch();
@@ -12,13 +13,12 @@ function MenuItem({ pizza }) {
   const isInCart = totalItemQunatity > 0;
 
   function handleAddItemCart() {
-    const quantity = 1;
     const newItem = {
       id,
       name,
       unitPrice,
-      quantity,
-      totalPrice: unitPrice * quantity,
+      quantity: 1,
+      totalPrice: unitPrice * 1,
     };
     console.log(newItem);
     dispatch(addItem(newItem));
@@ -31,6 +31,7 @@ function MenuItem({ pizza }) {
         alt={name}
         className={`w-24 ${soldOut ? "opacity-[50%] grayscale" : ""}`}
       />
+
       <div className="flex flex-grow flex-col">
         <p className="">{name}</p>
         <p className="text-sm text-stone-500 capitalize italic">
@@ -42,7 +43,15 @@ function MenuItem({ pizza }) {
           ) : (
             <p className="text-stone-500">Sold out</p>
           )}
-          {!soldOut && isInCart && <DeleteButton pizzaId={id} />}
+          {!soldOut && isInCart && (
+            <div className="flex items-center gap-4">
+              <UpdateItemQuantity
+                pizzaId={id}
+                totalQuantity={totalItemQunatity}
+              />
+              <DeleteButton pizzaId={id} />
+            </div>
+          )}
           {!soldOut && !isInCart && (
             <Button onClick={handleAddItemCart} type="small">
               Add to cart

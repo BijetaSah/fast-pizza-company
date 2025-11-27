@@ -6,7 +6,6 @@ import { formatCurrency } from "../../utilities/helpers";
 function CartOverview() {
   const totalPizzaQuantity = useSelector(getTotalCartQunaity);
   const totalPizzaPrice = useSelector(getTotalCartPrice);
-  console.log(totalPizzaPrice, totalPizzaQuantity);
 
   if (!totalPizzaQuantity || !totalPizzaPrice) return null;
   return (

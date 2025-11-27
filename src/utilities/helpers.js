@@ -1,7 +1,7 @@
 export function formatCurrency(value) {
   return new Intl.NumberFormat("en", {
     style: "currency",
-    currency: "INR", // changes currency to INR
+    currency: "EUR",
   }).format(value);
 }
 
